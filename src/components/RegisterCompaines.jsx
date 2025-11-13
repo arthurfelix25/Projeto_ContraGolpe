@@ -15,7 +15,6 @@ function RegisterCompaines() {
 			return
 		}
 
-		// Aqui você pode adicionar chamada real de login (fetch/fetch API).
 		console.log('Login attempt', { username })
 		navigate('/empresas')
 	}
@@ -40,22 +39,21 @@ function RegisterCompaines() {
 			return
 		}
 
-		// Aqui você pode adicionar chamada real para criar conta.
 		console.log('Register attempt', { username, cnpj })
 		alert('Conta criada com sucesso (simulação). Faça login.')
 		setShowRegister(false)
 	}
 
 	return (
-		<div className="flex items-center justify-center py-12">
+		<div className="flex items-center justify-center min-h-screen py-12">
 			{!showRegister ? (
 				<form
 					onSubmit={handleLogin}
-					className="flex flex-col gap-4 p-6 rounded-3xl bg-[#eaeaea] w-full max-w-[420px]"
+					className="flex flex-col gap-4 p-8 rounded-3xl bg-[#eaeaea] w-full max-w-[600px]"
 				>
 					<h2 className="text-2xl text-[#0b3d91] font-bold text-center mb-2">Login - Empresas</h2>
 
-					<label className="text-sm text-[#2e2e2e]">Usuário</label>
+					<label className="text-base text-[#2e2e2e] font-bold">Usuário</label>
 					<input
 						name="username"
 						type="text"
@@ -64,7 +62,7 @@ function RegisterCompaines() {
 						required
 					/>
 
-					<label className="text-sm text-[#2e2e2e]">Senha</label>
+					<label className="text-base text-[#2e2e2e] font-bold">Senha</label>
 					<input
 						name="password"
 						type="password"
@@ -92,11 +90,11 @@ function RegisterCompaines() {
 			) : (
 				<form
 					onSubmit={handleRegister}
-					className="flex flex-col gap-4 p-6 rounded-3xl bg-[#eaeaea] w-full max-w-[420px]"
+					className="flex flex-col gap-4 p-8 rounded-3xl bg-[#eaeaea] w-full max-w-[600px]"
 				>
 					<h2 className="text-2xl text-[#0b3d91] font-bold text-center mb-2">Registrar - Empresas</h2>
 
-					<label className="text-sm text-[#2e2e2e]">Usuário</label>
+					<label className="text-base text-[#2e2e2e] font-bold">Usuário</label>
 					<input
 						name="username"
 						type="text"
@@ -105,16 +103,17 @@ function RegisterCompaines() {
 						required
 					/>
 
-					<label className="text-sm text-[#2e2e2e]">CNPJ</label>
-					<input
-						name="cnpj"
-						type="text"
-						placeholder="CNPJ da empresa (somente números)"
-						className="border-0 rounded-xl h-10 bg-[#f2f2f2] text-[#2e2e2e] text-base pl-2.5 outline-0"
-						required
-					/>
-
-					<label className="text-sm text-[#2e2e2e]">Senha</label>
+                    <label className="text-base text-[#2e2e2e] font-bold">CNPJ</label>
+                    <input
+                        name="cnpj"
+                        type="text"
+                        placeholder="CNPJ da empresa"
+                        className="border-0 rounded-xl h-10 bg-[#f2f2f2] text-[#2e2e2e] text-base pl-2.5 outline-0"
+                        pattern="[0-9]*"
+                        inputMode="numeric"
+                        required
+                    />
+					<label className="text-base text-[#2e2e2e] font-bold">Senha</label>
 					<input
 						name="password"
 						type="password"
@@ -123,7 +122,7 @@ function RegisterCompaines() {
 						required
 					/>
 
-					<label className="text-sm text-[#2e2e2e]">Confirme a senha</label>
+					<label className="text-base text-[#2e2e2e] font-bold">Confirme a senha</label>
 					<input
 						name="confirm"
 						type="password"
