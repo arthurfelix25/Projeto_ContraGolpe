@@ -1,7 +1,8 @@
 package A3.projeto.A3Back.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="golpes")
@@ -36,6 +37,7 @@ public class UserModel {
     @Enumerated(EnumType.STRING)
     @Column(name="meio_contato", nullable = true)
 
+    @JsonProperty("meioContato")
     private MeioDeContato meioDeContato;
 
 
@@ -50,6 +52,9 @@ public class UserModel {
     }
 
     private String descricao;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
 
 
     public MeioDeContato getMeioDeContato() {
@@ -98,6 +103,14 @@ public class UserModel {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
 

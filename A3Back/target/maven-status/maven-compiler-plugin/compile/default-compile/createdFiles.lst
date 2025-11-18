@@ -1,0 +1,13 @@
+A3\projeto\A3Back\model\UserModel.class
+A3\projeto\A3Back\empresas\DAO\EmpresaRepository.class
+A3\projeto\A3Back\A3BackApplication.class
+A3\projeto\A3Back\Config\CorsConfig$1.class
+A3\projeto\A3Back\Config\EmpresasDataSourceConfig.class
+A3\projeto\A3Back\empresas\controller\EmpresaController.class
+A3\projeto\A3Back\Config\CorsConfig.class
+A3\projeto\A3Back\controller\UserController.class
+A3\projeto\A3Back\DAO\IUser.class
+A3\projeto\A3Back\empresas\controller\EmpresaController$CreateEmpresaRequest.class
+A3\projeto\A3Back\empresas\model\Empresa.class
+A3\projeto\A3Back\Config\GolpeDataSourceConfig.class
+A3\projeto\A3Back\model\UserModel$MeioDeContato.class
