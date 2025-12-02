@@ -23,12 +23,13 @@ function Register() {
 
         const nome= event.target.nome.value;
         const cidade= event.target.cidade.value;
-        const meioContato = event.target.meioContato.value;
+        const meioDeContato = event.target.meioContato.value;
         const empresa = event.target.empresa.value;
         const cpf = event.target.cpf.value;
+        const emailOuTelefone = event.target.emailOutelefone.value;
         const descricao = event.target.descricao.value;
         
-        fetch("http://localhost:8080/usuarios", {
+        fetch("http://localhost:8080/api/cadastrogolpes", {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -37,9 +38,10 @@ function Register() {
             body: JSON.stringify({
                 nome: nome,
                 cidade: cidade,
-                meioContato: meioContato,
+                meioDeContato: meioDeContato,
                 empresa: empresa,
                 cpf: cpf,
+                emailOuTelefone: emailOuTelefone,
                 descricao: descricao
             })
         })

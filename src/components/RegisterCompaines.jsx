@@ -1,5 +1,6 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { ENDPOINTS, createHeaders } from "../config/api"
 
 function RegisterCompaines() {
 	const navigate = useNavigate()
@@ -15,8 +16,34 @@ function RegisterCompaines() {
 			return
 		}
 
-		localStorage.setItem('empresaUsuario', username)
-		navigate('/empresa')
+		fetch(ENDPOINTS.AUTH.LOGIN, {
+			method: 'POST',
+			headers: createHeaders(),
+			body: JSON.stringify({ usuario: username, password })
+		})
+			.then(async (res) => {
+				if (!res.ok) {
+					const txt = await res.text()
+					throw new Error(txt || 'Credenciais inválidas')
+				}
+				return res.json()
+			})
+			.then((data) => {
+				console.log('>>> [Login] Resposta do backend:', data)
+				localStorage.setItem('empresaUsuario', data.empresa)
+				if (data.token) {
+					localStorage.setItem('authToken', data.token)
+				}
+				if (data.scamReports) {
+					localStorage.setItem('scamReports', JSON.stringify(data.scamReports))
+				}
+				alert('Login realizado com sucesso!')
+				navigate('/empresa')
+			})
+			.catch((err) => {
+				console.error(err)
+				alert('Erro ao fazer login: ' + err.message)
+			})
 	}
 
 	function handleRegister(e) {
@@ -40,12 +67,9 @@ function RegisterCompaines() {
 		}
 
 
-		fetch('http://localhost:8080/empresa', {
+		fetch(ENDPOINTS.EMPRESA.CADASTRO, {
 			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
+			headers: createHeaders(),
 			body: JSON.stringify({ usuario: username, cnpj, password })
 		})
 			.then(async (res) => {
